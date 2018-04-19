@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PlugIn-Metadata xmlns="urn:plug-in-bundle-plugin.addin-2.0" AssemblyVersion=""
+                  Name=""
+                  Title=""
+                  Description=""
+                  Company=""
+                  Path=""
+                  Url="" 
+                  Copyright=""
+                  Enabled="true"
+                 Immediate="true"
+                 Product="">
+
+  <Runtime>
+    <Import assembly="" isweb="false"/>
+    
+  </Runtime>
+  
+  <Service>
+    <Provide Interface="abc"/>
+  </Service>
+  <ApplicationMenu ApplicationIco="">
+    <ExtendsMenu ApplicationName="" Language="">
+      <Menu Caption="" ClassForm=""  DockType="ShowDialog" Group="" MenuIco="" ToolTip=""/>
+    </ExtendsMenu>
+  </ApplicationMenu>
+  
+  <PageService ServicePoint="">
+    <PageNode PageName="" PagePlguinClassValue="" PageType="Web"/>
+  </PageService>
+  
+</PlugIn-Metadata>
+  <!--<Component Copyright="" Author="" Url="" Description="" Name="aaa" Enabled="true" Immediate="true" Factory="" Path=""
+             company=""    >
+    <Property Name="a" Value="a" />
+    <Property Name="b" Value="b" />
+    <Runtime>  
+      <Import assembly="aa"  />
+      <Import assembly="bbb" />
+      <Dependency AssemblyName="ccc" BundleSymbolicName="ddd"/>
+      <Dependency AssemblyName="eee" BundleSymbolicName="fff"/>
+    </Runtime>   
+    <Implementation Name="a" />
+    <Service>
+      <Provide Interface="aAAAa" />
+    </Service>
+  </Component>-->
