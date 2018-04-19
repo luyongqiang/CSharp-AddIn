@@ -3,6 +3,7 @@ C# generic component part of the code from the network, but made some of the pac
 Because the project used to related components Syncfusion. So put the current program named Syncfusion.Addin. The main component is a plug-in module。
 
 plguin xml 
+
 <?xml version="1.0" encoding="utf-8" ?>
 <PlugIn-Metadata xmlns="urn:plug-in-bundle-plugin.addin-2.0"
             Name="Plugin2"
@@ -16,6 +17,7 @@ plguin xml
     <Import assembly="Plugins\Plugin2\bin\Plugin2.dll" isweb="false"/>
   </Runtime>
 </PlugIn-Metadata>
+
 
 plugin class 
 
