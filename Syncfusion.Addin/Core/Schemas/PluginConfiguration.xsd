@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * $Id: ComponentMetadata.xsd 2007-12-28 egeye.cn@gmail.com $
+ * 
+ * Copyright (c) Kevin Zhou (2007, 2008). All Rights Reserved.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<xs:schema xmlns:cs="urn:plug-in-bundle-plugin.addin-2.0"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="urn:plug-in-bundle-plugin.addin-2.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PlugIn-Metadata" type="cs:AddinMetadata" />
+  <!-- Component map -->
+  <xs:complexType name="AddinMetadata">
+    <xs:sequence>
+      <xs:element name="Runtime" type="cs:RuntimeInfo"  maxOccurs="1"/>
+      <xs:element name="Implementation" type="cs:ImplementationInfo" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Reference" type="cs:ReferenceInfo" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="Service" type="cs:ServiceInfo" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Property" type="cs:PropertyInfo" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ApplicationMenu" type="cs:ApplicationMenu" minOccurs="0" maxOccurs="1" />
+      <xs:element name="PageService" type="cs:PageService" minOccurs="0" maxOccurs="1" />
+      <xs:element name="AppSettings" type="cs:AppSettings" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+
+    <xs:attribute name="Name" type="xs:string" use="required" />
+    <xs:attribute name="Title" type="xs:string" use ="optional"/>
+    <xs:attribute name="Description" type="xs:string" use="optional" />
+    <xs:attribute name="Company" type="xs:string" use="optional"/>
+    <xs:attribute name="Copyright" type="xs:string" use="optional" />
+    <xs:attribute name="Product" type="xs:string" use="optional"/>
+    <xs:attribute name="AssemblyVersion" default="1.0.0.0" type="xs:string" use="optional"/>
+    <xs:attribute name="Url" type="xs:anyURI" use="optional" />
+    <!--启动级别-->
+    <xs:attribute name="StartLevel" type="xs:int" default="2" use="optional"/>
+    <!--如果为False 则启动不加载-->
+    <xs:attribute name="Enabled" type="xs:boolean" default="true" use="optional" />
+    <xs:attribute name="Path" type="xs:string" use="required" />
+    <!--即时加载-->
+    <xs:attribute name="Immediate" type="xs:boolean" use="optional"/>
+  </xs:complexType>
+  <!--Setting Info-->
+  <xs:complexType name="AppSettings">
+    <xs:sequence>
+      <xs:choice  maxOccurs="unbounded">
+        <xs:element name="Add" type="cs:Add" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Add">
+    <xs:attribute name="key" type="xs:string" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+  <!-- Property -->
+  <xs:complexType name="PropertyInfo">
+    <xs:attribute name="Name" type="xs:string" use="optional" />
+    <xs:attribute name="Value" type="xs:string" use="optional" />
+    <xs:attribute name="Type" type="xs:string" use="optional" />
+  </xs:complexType>
+  <!-- Runtime entironment -->
+  <xs:complexType name="RuntimeInfo">
+    <xs:sequence>
+      <xs:choice  maxOccurs="unbounded">
+        <xs:element name="Import" type="cs:ImportInfo" />
+      </xs:choice>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="Dependency" type="cs:Dependency" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- Import the assembley -->
+  <xs:complexType name="ImportInfo">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Doozer" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ConditionEvaluator" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="assembly" type="xs:string" use="required" />
+    <xs:attribute name="isweb" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <!-- Dependency the assembley -->
+  <xs:complexType name="Dependency">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="Doozer" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="ConditionEvaluator" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:choice>
+    <xs:attribute name="BundleSymbolicName" type="xs:string" use="required" />
+    <xs:attribute name="AssemblyName" type="xs:string" use="required" />
+  </xs:complexType>
+  <!-- The BundleActivator (Interface) implementary class -->
+  <xs:complexType name="ImplementationInfo">
+    <xs:attribute name="Name" type="xs:string" use="required" />
+  </xs:complexType>
+  <!-- Reference to other component -->
+  <xs:complexType name="ReferenceInfo">
+    <xs:attribute name="Name" type="xs:string" use="required" />
+    <xs:attribute name="Interface" type="xs:string" use="required" />
+    <xs:attribute name="Version" type="xs:string" use="optional" />
+    <xs:attribute name="Bind" type="xs:string" use="optional" />
+    <xs:attribute name="Unbind" type="xs:string" use="optional" />
+  </xs:complexType>
+  <!-- The component service -->
+  <xs:complexType name="ServiceInfo">
+    <xs:choice>
+      <xs:element name="Provide" type="cs:ProvideInfo" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- The component provider -->
+  <xs:complexType name="ProvideInfo">
+    <xs:attribute name="Interface" type="xs:string" use="required" />
+  </xs:complexType>
+  <!--Application Menu-->
+  <xs:complexType name="ApplicationMenu">
+    <xs:choice  minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="ExtendsMenu"  type="cs:ExtendsMenu"></xs:element>
+    </xs:choice>
+
+    <xs:attribute  name="ApplicationIco" type="xs:string" ></xs:attribute>
+  </xs:complexType>
+  <!-- Them component menu-->
+  <xs:complexType name="ExtendsMenu">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Menu" type="cs:MenuInfo" />
+    </xs:choice>
+
+    <xs:attribute  name="ApplicationName" type="xs:string" ></xs:attribute>
+    <xs:attribute name="Language" type="xs:string" default="zh-CN" />
+  </xs:complexType>
+  <!--menu-->
+  <xs:complexType name="MenuInfo">
+    <xs:choice  minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="LoadPanels" maxOccurs="unbounded" minOccurs="0" type="cs:LoadOtherContainerPanles"/>
+    </xs:choice>
+    <xs:attribute  name="MenuIco" type="xs:string"  use="required"/>
+    <xs:attribute  name="Caption" type="xs:string"  use="required"/>
+    <xs:attribute  name="Group" type="xs:string"  use="required"/>
+    <xs:attribute  name="ToolTip" type="xs:string"  use="required"/>
+    <xs:attribute  name="ClassForm" type="xs:string"  use="required"/>
+    <xs:attribute name="DockType"   type="cs:PluginDockStyle" use="required"/>
+    <xs:attribute name="Width"  type="xs:int" use="optional"/>
+    <xs:attribute name="High"  type="xs:int" use="optional"/>
+    <xs:attribute name="Sort"  type="xs:int" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="PageNode">
+    <xs:attribute name="PageName"  type="xs:string"  use="required"></xs:attribute>
+    <xs:attribute name="PagePlguinClassValue"  type="xs:string"  use="required"></xs:attribute>
+    <xs:attribute name="PageType"  type="cs:LoadType" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType  name="PageService">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="PageNode" type="cs:PageNode" />
+    </xs:choice>
+
+    <xs:attribute name="ServicePoint" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="LoadOtherContainerPanles">
+    <xs:attribute name="TypePanel" type="xs:string" use="required"/>
+    <xs:attribute name="Caption" type="xs:string" use="required"/>
+    <xs:attribute name="DockType" type="cs:PluginDockStyle" use="required"/>
+    <!--父级窗口在关闭的时候 是否关闭-->
+    <xs:attribute name="IsClose" type="xs:boolean" use="optional" default="true"/>
+    <!--主界面-->
+    <xs:attribute name="MainForm" type="xs:string" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType  name="PluginDockStyle">
+    <xs:restriction  base="xs:normalizedString">
+      <xs:enumeration value="DockRight"/>
+      <xs:enumeration value="DockLeft"/>
+      <xs:enumeration value="DockBottom"/>
+      <xs:enumeration value="DockTop"/>
+      <xs:enumeration value="DockFill"/>
+      <xs:enumeration value="ShowDialog"/>
+      <xs:enumeration value="DockVerticalLeft"/>
+      <xs:enumeration value="DockVerticalRight"/>
+      <xs:enumeration value="DockHorizontalTop"/>
+      <xs:enumeration value="DockHorizontalBottom"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LoadType">
+    <xs:restriction base="xs:normalizedString">
+      <xs:enumeration value="Web"/>
+      <xs:enumeration value="Wpf"/>
+      <xs:enumeration value="WinForm"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

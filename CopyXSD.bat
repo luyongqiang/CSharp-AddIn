@@ -1,0 +1,1 @@
+copy E:\项目应用\Microsoft.Osgi.Framework\Syncfusion.Addin\Syncfusion.Addin\Core\Schemas\PluginConfiguration.xsd C:\Program Files (x86)\Microsoft Visual Studio 14.0\Xml\Schemas\PluginConfiguration.xsd

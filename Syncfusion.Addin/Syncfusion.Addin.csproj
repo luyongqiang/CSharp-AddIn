@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1C0F531-3CDB-4C44-A29C-8F6A14E21CF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Syncfusion.Addin</RootNamespace>
+    <AssemblyName>Syncfusion.Addin</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>D:\ShareDLL\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\ShareDLL\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\build\Syncfusion.Addin.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddIn\AddInAttribute.cs" />
+    <Compile Include="AddIn\AddInBase.cs" />
+    <Compile Include="AddIn\BundleEventArgs.cs" />
+    <Compile Include="AddIn\BundleEventHandler.cs" />
+    <Compile Include="AddIn\BundleException.cs" />
+    <Compile Include="Core\BundleRunTime.cs" />
+    <Compile Include="AddIn\BundleState.cs" />
+    <Compile Include="AddIn\BundleTransition.cs" />
+    <Compile Include="Configuration\Plugin\ApplicationExtensionData.cs" />
+    <Compile Include="Core\Bundle.cs" />
+    <Compile Include="Core\BundleContext.cs" />
+    <Compile Include="Core\BundleRepository.cs" />
+    <Compile Include="Core\BundleRuntimeState.cs" />
+    <Compile Include="Core\BundleRuntimeType.cs" />
+    <Compile Include="Core\BundleStopOptions.cs" />
+    <Compile Include="Core\Collection\DisposableLocker.cs" />
+    <Compile Include="Core\Collection\ThreadSafeCollection.cs" />
+    <Compile Include="Core\Collection\ContainerLocker.cs" />
+    <Compile Include="Core\Collection\ThreadSafeList.cs" />
+    <Compile Include="Core\DesignPatterns\Singleton.cs" />
+    <Compile Include="Core\EventManager.cs" />
+    <Compile Include="Core\Extensions\BoolExtensions.cs" />
+    <Compile Include="Core\Extensions\CharExtensions.cs" />
+    <Compile Include="Core\Extensions\ClassExtensions.cs" />
+    <Compile Include="Core\Extensions\DataSetExtensions.cs" />
+    <Compile Include="Core\Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Core\Extensions\DecimalExtensions.cs" />
+    <Compile Include="Core\Extensions\DoubleExtensions.cs" />
+    <Compile Include="Core\Extensions\EventHandlerExtensions.cs" />
+    <Compile Include="Core\Extensions\FloatExtensions.cs" />
+    <Compile Include="Core\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Core\Extensions\IListExtensions.cs" />
+    <Compile Include="Core\Extensions\IntExtensions.cs" />
+    <Compile Include="Core\Extensions\IServiceProviderExtensions.cs" />
+    <Compile Include="Core\Extensions\LinqExtensions.cs" />
+    <Compile Include="Core\Extensions\LongExtensions.cs" />
+    <Compile Include="Core\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Core\Extensions\StringExtensions.cs" />
+    <Compile Include="Core\Filter.cs" />
+    <Compile Include="Core\Framework.cs" />
+    <Compile Include="Core\IServiceRegistry.cs" />
+    <Compile Include="Core\IShell.cs" />
+    <Compile Include="Core\Metadata\PluginConfiguration.cs" />
+    <Compile Include="Core\Reflection\AttributeInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\RegistrationState.cs" />
+    <Compile Include="Core\ServiceReference.cs" />
+    <Compile Include="Core\ServiceRegistration.cs" />
+    <Compile Include="Core\ServiceRegistry.cs" />
+    <Compile Include="Core\ServicesImp\BundleFactory.cs" />
+    <Compile Include="Core\ServicesImp\ServiceManager.cs" />
+    <Compile Include="Core\ServicesImp\DictionaryLocker.cs" />
+    <Compile Include="Core\ServicesImp\ThreadSafeDictionary.cs" />
+    <Compile Include="Core\Services\IServiceManager.cs" />
+    <Compile Include="Core\Services\IBundleFactory.cs" />
+    <Compile Include="Core\Services\Preferences.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Services\PreferencesProxy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\Services\UnInstallBundleOption.cs" />
+    <Compile Include="Core\ShellSetup.cs" />
+    <Compile Include="Core\SystemBundle.cs" />
+    <Compile Include="AddIn\Annotations.cs" />
+    <Compile Include="Core\Utilities\DataHelper.cs" />
+    <Compile Include="Core\Utilities\EnumHelper.cs" />
+    <Compile Include="Core\Utilities\If.cs" />
+    <Compile Include="Core\Utilities\ObjectHelper.cs" />
+    <Compile Include="Core\Utilities\ObjectInstantiationException.cs" />
+    <Compile Include="Core\Utilities\SecurityHelper.cs" />
+    <Compile Include="Core\Utilities\StreamHelper.cs" />
+    <Compile Include="Core\Utilities\StringHelper.cs" />
+    <Compile Include="Core\Utilities\Zip.cs" />
+    <Compile Include="Properties\Resources.zh-Hans.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\AssertUtility.cs" />
+    <Compile Include="Utility\FileHelper.cs" />
+    <Compile Include="Utility\FileLogUtility.cs" />
+    <Compile Include="Utility\NetworkHelper.cs" />
+    <Compile Include="Utility\ReflectionUtil.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\StringTokenizer.cs" />
+    <Compile Include="Utility\XmlConvertor.cs" />
+    <Compile Include="AddIn\FrameworkEventArgs.cs" />
+    <Compile Include="AddIn\FrameworkEventHandler.cs" />
+    <Compile Include="AddIn\FrameworkState.cs" />
+    <Compile Include="AddIn\FrameworkUtil.cs" />
+    <Compile Include="AddIn\ServiceEventArgs.cs" />
+    <Compile Include="AddIn\ServiceState.cs" />
+    <Compile Include="AddIn\IBundle.cs" />
+    <Compile Include="AddIn\IBundleActivator.cs" />
+    <Compile Include="AddIn\IBundleContext.cs" />
+    <Compile Include="AddIn\IBundleRepository.cs" />
+    <Compile Include="AddIn\IFilter.cs" />
+    <Compile Include="AddIn\IFramework.cs" />
+    <Compile Include="AddIn\InvalidSyntaxException.cs" />
+    <Compile Include="AddIn\IServiceFactory.cs" />
+    <Compile Include="AddIn\IServiceReference.cs" />
+    <Compile Include="AddIn\IServiceRegistration.cs" />
+    <Compile Include="Configuration\Loggin\FileLog.cs" />
+    <Compile Include="Configuration\Loggin\ILogginContext.cs" />
+    <Compile Include="Configuration\Loggin\Log.cs" />
+    <Compile Include="Configuration\Loggin\Logger_Msg.cs" />
+    <Compile Include="Configuration\Loggin\LogLevelUtils.cs" />
+    <Compile Include="Configuration\Loggin\NullLog.cs" />
+    <Compile Include="Configuration\Loggin\TextWriterLog.cs" />
+    <Compile Include="Configuration\PluginXmlProcess.cs" />
+    <Compile Include="Configuration\Plugin\ActivatorData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Configuration\Plugin\AssemblyData.cs" />
+    <Compile Include="Configuration\Plugin\BundleData.cs" />
+    <Compile Include="Configuration\Plugin\BundleInfoData.cs" />
+    <Compile Include="Configuration\Plugin\DependencyData.cs" />
+    <Compile Include="Configuration\Plugin\ExtensionData.cs" />
+    <Compile Include="Configuration\Plugin\ExtensionPointData.cs" />
+    <Compile Include="Configuration\Plugin\ExtendionMenu.cs" />
+    <Compile Include="Configuration\Plugin\PageServiceData.cs" />
+    <Compile Include="Configuration\Plugin\RuntimeData.cs" />
+    <Compile Include="Configuration\Plugin\ServiceData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.zh-Hans.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.zh-Hans.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Schemas\PluginConfiguration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Core\Schemas\GenComponentMetadata.bat">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\Schemas\PluginAddin.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
